@@ -73,6 +73,7 @@ body{
     position: fixed;
     top: 0;
     text-align: center;
+    display: none;
 }
 
 .uformBox{
@@ -104,4 +105,14 @@ input[type="file"]{
     border-radius: 7px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.success{
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.829);
+    min-width: 100vw;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    text-align: center;
 }

@@ -13,9 +13,10 @@ ini_set('max_execution_time', 300);
         {
             mkdir($upload.'/'.$room);
         }
-     $fupload=move_uploaded_file($t_name,$upload.'/'.$room.'/'.$name);
+        $extend=end((explode(".", $f_name)));
+     $fupload=move_uploaded_file($t_name,$upload.'/'.$room.'/'.$name.'.'.$extend);
      if($fupload){
-         echo 'file uploaded';
+         echo '<style>.success{display: block; }</style>';
      }
    }
 ?>
@@ -43,7 +44,7 @@ ini_set('max_execution_time', 300);
     </div>
 
     <div class="main">
-        <span class="upload">Upload</span><br>
+        <span class="upload" onclick="uploader()">Upload</span><br>
         <span class="download">Download</span>
     </div>
     <div class="uform">
@@ -56,7 +57,12 @@ ini_set('max_execution_time', 300);
         </form>
     </div>
         </div>
-    
+
+        <div class="success">
+            File upload successful
+        </div>
+
+    <script defer src="script.js"></script>
 
 </body>
 </html>
