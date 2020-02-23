@@ -6,9 +6,14 @@ ini_set('max_execution_time', 300);
    if(isset($_POST['btn'])){
      $f_name=$_FILES['file']['name'];
      $t_name=$_FILES['file']['tmp_name'];
-     $upload='uploads/';
-
-     $fupload=move_uploaded_file($t_name,$upload.$f_name);
+     $room=$_POST['room'];
+     $name=$_POST['name'];
+     $upload='uploads';
+     if( is_dir($upload.'/'.$room) === false )
+        {
+            mkdir($upload.'/'.$room);
+        }
+     $fupload=move_uploaded_file($t_name,$upload.'/'.$room.'/'.$name);
      if($fupload){
          echo 'file uploaded';
      }
