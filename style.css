@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body{
+    background: linear-gradient(110deg, #1f1e1e 60%, #4dd300ea 60%);
+    min-height: 100vh;
+    font-family: 'Comfortaa', 'sans';
+    color: white;
+
+}
+
+.main-title{
+    font-size: 70px;
+    color: #4dd300ea;
+}
+.sub-title{
+    font-size: 17px;
+    padding-left: 70px;
+    padding-top: 10px;
+    color: rgb(196, 196, 196);
+}
+
+.upload, .download{
+    background-color: #4dd300ea;
+    color: white;
+    position: absolute;
+    top: 60%;
+    padding: 17px;
+    text-align: center;
+    min-width: 150px;
+    font-size: 20px;
+    border-radius: 6px;
+}
+
+.upload{
+    left: 5%;
+}
+.download{
+    left: 20%;
+}
+
+.upload:hover, .download:hover, input[type="submit"]:hover{
+    background-color: #5eff00ea;
+    cursor: pointer;
+}
+
+.text{
+    margin: 150px 0px 50px 100px;
+}
+
+.t1{
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+.t2{
+    line-height: 2em;
+    color: rgb(232, 235, 231);
+}
+
+.uform{
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.829);
+    min-width: 100vw;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    text-align: center;
+}
+
+.uformBox{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input[type="text"], input[type="number"], input[type="submit"], input[type="file"]{
+    padding: 5px;
+    min-width: 300px;
+    margin: 10px;
+    font-size: 15px;
+}
+
+input[type="submit"]{
+    padding: 10px;
+    background-color: #4dd300ea;
+    border: none;
+    color: white;
+    border-radius: 7px;
+    font-size: 18px;
+}
+
+input[type="file"]{
+    background-color: #4dd300ea;
+    border-radius: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
