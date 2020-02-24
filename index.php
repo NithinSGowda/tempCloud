@@ -16,7 +16,7 @@ ini_set('max_execution_time', 300);
         $extend=end((explode(".", $f_name)));
      $fupload=move_uploaded_file($t_name,$upload.'/'.$room.'/'.$name.'.'.$extend);
      if($fupload){
-         echo '<style>.success{display: block; }</style>';
+         echo '<script>setTimeout(window.location.replace("http://tempcloud.ml"), 2000);alert("File upload successfull.")</script>';
      }
    }
 ?>
@@ -57,11 +57,6 @@ ini_set('max_execution_time', 300);
         </form>
     </div>
         </div>
-
-        <div class="success">
-            File upload successful
-        </div>
-
     <script defer src="script.js"></script>
 
 </body>
