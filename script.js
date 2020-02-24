@@ -7,3 +7,9 @@ function uploader(){
 function downloader(){
     dform.style.display='block'
 }
+function dclose(){
+    dform.style.display='none'
+}
+function uclose(){
+    uform.style.display='none'
+}

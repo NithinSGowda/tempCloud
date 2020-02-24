@@ -112,3 +112,26 @@ input[type="file"]{
     bottom: 10px;
     right: 10px;
 }
+
+.dclose, .uclose{
+    font-size: 50px;
+    position: fixed;
+    top: 3%;
+    right: 2%;
+    color: #ffffff;
+    font-stretch: extra-expanded;
+    animation-name: tutor;
+	animation-duration: 500ms;
+    animation-iteration-count: 3000;
+    cursor: pointer;
+}
+@keyframes tutor {
+	from {
+		color: rgb(255, 255, 255);
+		transform: scale(1);
+	}
+	to {
+		color: rgb(75, 233, 13);
+		transform: scale(1);
+	}
+  }

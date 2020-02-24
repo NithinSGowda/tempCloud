@@ -24,9 +24,13 @@ ini_set('max_execution_time', 300);
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="Images/Logo.png" type="image/png">
     <meta charset="UTF-8">
     <title>temp Cloud</title>
     <link rel="stylesheet" href="style.css" type="text/css">
+    <meta name="description" content="Temporary Cloud Stoarage and Service">
+    <meta name="keywords" content="tempcloud, nithin ,nithin s,Temporary Cloud, File sharing online">
+    <meta name="author" content="Nithin S">
 </head> 
 <body>
     <div class="title">
@@ -38,7 +42,8 @@ ini_set('max_execution_time', 300);
         <div class="t1">File transfers made easy</div>
         <div class="t2">Just follow these simple steps below :<br>
             1) Click on upload and choose your file, enter a random private room number [1 - 99999]<br>
-            2) On the reciever device click on download and enter the port number to download your file
+            2) On the reciever device click on download and enter the port number to download your file<br>
+            3) This a temporary cloud service, your files will be available only for <b>6hrs</b> from upload
         </div>
     </div>
 
@@ -55,6 +60,7 @@ ini_set('max_execution_time', 300);
             <input type="submit" class="submit" name="btn">
         </form>
     </div>
+    <div class="uclose" onclick="uclose()">X</div>
         </div>
     <div class="dform">
         <div class="dformBox">
@@ -64,6 +70,7 @@ ini_set('max_execution_time', 300);
             <input type="submit" class="submit" name="btn">
         </form>
     </div>
+    <div class="dclose" onclick="dclose()">X</div>
         </div>
         <div class="dev">
         &copy; Developed by Nithin S. All rights reserved
