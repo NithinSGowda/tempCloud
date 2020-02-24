@@ -55,7 +55,7 @@ ini_set('max_execution_time', 300);
         <div class="uformBox">
             <form action="index.php" method="POST" enctype="multipart/form-data">
             <input type="file" name="file" required><br>
-            <input type="text" name="name" placeholder="Enter the name of your file : (myfile)" required><br>
+            <input type="text" name="name" placeholder="Enter the name of your file : (myfile)" required autofocus><br>
             <input type="number" name="room" min="1" max="99999" placeholder="1-99999" required><br>
             <input type="submit" class="submit" name="btn">
         </form>
@@ -65,7 +65,7 @@ ini_set('max_execution_time', 300);
     <div class="dform">
         <div class="dformBox">
             <form action="download.php" method="POST" enctype="multipart/form-data">
-            <input type="text" name="name" placeholder="Filename : (example.pdf)" required><br>
+            <input type="text" name="name" placeholder="Filename : (example.pdf)" required autofocus><br>
             <input type="number" name="room" min="1" max="99999" placeholder="1-99999" required><br>
             <input type="submit" class="submit" name="btn">
         </form>
@@ -75,6 +75,31 @@ ini_set('max_execution_time', 300);
         <div class="dev">
         &copy; Developed by Nithin S. All rights reserved
     </div>
+
+    <div class="tutorial">
+        <span class="done" onclick="tuthide()">Got it</span>
+        <div class="up">
+            <img src="Images/up.png" class="up-img" type="image/png">
+        </div>
+        <div class="mid">
+            <img src="Images/fast-forward.png" class="mid-img" type="image/png">
+        </div>
+        <div class="instructions-1">
+            Upload the file from any device by entering :<br>
+            1) File name (without extension type like .pdf)<br>
+            2) A private random room number.
+        </div>
+        <div class="instructions-2">
+            Download the file from any device by entering :<br>
+            1) File name (with extension type like .pdf)<br>
+            2) The same private room number provided during upload
+        </div>
+        <div class="down">
+            <img src="Images/down.png" class="down-img" type="image/png">
+        </div>
+    </div>
+
+
     <script defer src="script.js"></script>
 
 </body>

@@ -135,3 +135,77 @@ input[type="file"]{
 		transform: scale(1);
 	}
   }
+
+
+.tutorial{
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.918);
+    min-width: 100vw;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    line-height: 2em;
+}
+
+.up-img, .down-img, .mid-img{
+    width: 300px;
+}
+
+.up{
+    position: absolute;
+    top: 30%;
+    left: 20%;
+}
+
+.down{
+    position: absolute;
+    top: 32%;
+    right: 20%;
+}
+
+.instructions-1{
+    position: absolute;
+    top: 60%;
+    left: 20%;
+}
+.instructions-2{
+    position: absolute;
+    top: 60%;
+    right: 20%;
+    text-align: end;
+}
+.mid-img{
+    width: 100px;
+}
+
+.mid{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-name: mid;
+	animation-duration: 1000ms;
+    animation-iteration-count: 3000;
+}
+
+@keyframes mid {
+	from {
+		opacity: 50%;
+	}
+	to {
+		opacity: 100%;
+	}
+  }
+
+.done{
+    color: white;
+    background-color: #4dd300ea;
+    border-radius: 6px;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    padding: 10px 25px 10px 25px;
+    cursor: pointer;
+}
