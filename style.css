@@ -65,7 +65,7 @@ body{
     color: rgb(232, 235, 231);
 }
 
-.uform{
+.uform, .dform{
     z-index: 2;
     background-color: rgba(0, 0, 0, 0.829);
     min-width: 100vw;
@@ -76,7 +76,7 @@ body{
     display: none;
 }
 
-.uformBox{
+.uformBox, .dformBox{
     margin: 0;
     position: absolute;
     top: 50%;
@@ -105,4 +105,10 @@ input[type="file"]{
     border-radius: 7px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+.dev{
+    color: rgb(0, 0, 0);
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }

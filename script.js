@@ -1,6 +1,9 @@
-const form=document.querySelector('.uform');
-const upload=document.querySelector('.upload');
+const uform=document.querySelector('.uform');
+const dform=document.querySelector('.dform');
 
 function uploader(){
-    form.style.display='block'
+    uform.style.display='block'
+}
+function downloader(){
+    dform.style.display='block'
 }

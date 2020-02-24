@@ -25,7 +25,6 @@ ini_set('max_execution_time', 300);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>temp Cloud</title>
     <link rel="stylesheet" href="style.css" type="text/css">
 </head> 
@@ -45,18 +44,30 @@ ini_set('max_execution_time', 300);
 
     <div class="main">
         <span class="upload" onclick="uploader()">Upload</span><br>
-        <span class="download">Download</span>
+        <span class="download" onclick="downloader()">Download</span>
     </div>
     <div class="uform">
         <div class="uformBox">
             <form action="index.php" method="POST" enctype="multipart/form-data">
             <input type="file" name="file" required><br>
-            <input type="text" name="name" placeholder="Enter the name of your file" value="myname" required><br>
-            <input type="number" name="room" min="1" max="99999" placeholder="1-99999" value="10" required><br>
+            <input type="text" name="name" placeholder="Enter the name of your file : (myfile)" required><br>
+            <input type="number" name="room" min="1" max="99999" placeholder="1-99999" required><br>
             <input type="submit" class="submit" name="btn">
         </form>
     </div>
         </div>
+    <div class="dform">
+        <div class="dformBox">
+            <form action="download.php" method="POST" enctype="multipart/form-data">
+            <input type="text" name="name" placeholder="Filename : (example.pdf)" required><br>
+            <input type="number" name="room" min="1" max="99999" placeholder="1-99999" required><br>
+            <input type="submit" class="submit" name="btn">
+        </form>
+    </div>
+        </div>
+        <div class="dev">
+        &copy; Developed by Nithin S. All rights reserved
+    </div>
     <script defer src="script.js"></script>
 
 </body>
