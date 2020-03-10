@@ -9,7 +9,7 @@
 }
 
 body{
-    background: linear-gradient(110deg, #1f1e1e 60%, #4dd300ea 60%);
+    background: linear-gradient(110deg, #1f1e1e 60%, #4dd300e7 60%);
     min-height: 100vh;
     font-family: 'Comfortaa', 'sans';
     color: white;
@@ -22,7 +22,7 @@ body{
 }
 .sub-title{
     font-size: 17px;
-    padding-left: 70px;
+    padding-left: 5vw;
     padding-top: 10px;
     color: rgb(196, 196, 196);
 }
@@ -30,20 +30,12 @@ body{
 .upload, .download{
     background-color: #4dd300ea;
     color: white;
-    position: absolute;
-    top: 60%;
     padding: 17px;
     text-align: center;
     min-width: 150px;
     font-size: 20px;
     border-radius: 6px;
-}
-
-.upload{
-    left: 5%;
-}
-.download{
-    left: 20%;
+    margin: 10px 5vw 10px 5vw;
 }
 
 .upload:hover, .download:hover, input[type="submit"]:hover{
@@ -52,7 +44,7 @@ body{
 }
 
 .text{
-    margin: 150px 0px 50px 100px;
+    margin: 15vh 5vh 10vh 4vh;
 }
 
 .t1{
