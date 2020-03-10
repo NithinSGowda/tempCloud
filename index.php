@@ -24,6 +24,7 @@ ini_set('max_execution_time', 300);
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="Images/Logo.png" type="image/png">
     <meta charset="UTF-8">
     <title>temp Cloud</title>
@@ -43,7 +44,7 @@ ini_set('max_execution_time', 300);
         <div class="t2">Just follow these simple steps below :<br>
             1) Click on upload and choose your file, enter a random private room number [1 - 99999]<br>
             2) On the reciever device click on download and enter the port number to download your file<br>
-            3) This a temporary cloud service, your files will be available only for <b>6hrs</b> from upload
+            3) This a temporary cloud service, your files will be deleted if not downloaded for last <b>24hrs</b>
         </div>
     </div>
 
