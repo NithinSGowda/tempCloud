@@ -3,6 +3,12 @@ ini_set('upload_max_filesize', '200M');
 ini_set('post_max_size', '200M');
 ini_set('max_input_time', 300);
 ini_set('max_execution_time', 300);
+$url = 'http://nith.ml/api.php?input=';
+$return = 'http://tempcloud.ml?link=';
+
+if (isset($_GET["link"])) {
+	echo $_GET["link"];
+}
    if(isset($_POST['btn'])){
      $f_name=$_FILES['file']['name'];
      $t_name=$_FILES['file']['tmp_name'];
@@ -16,7 +22,11 @@ ini_set('max_execution_time', 300);
         $extend=end((explode(".", $f_name)));
      $fupload=move_uploaded_file($t_name,$upload.'/'.$room.'/'.$name.'.'.$extend);
      if($fupload){
-         echo '<script>setTimeout(window.location.replace("http://tempcloud.ml"), 2000);alert("File upload successfull.")</script>';
+     $link = 'http://tempcloud.ml/uploads/'.$room.'/'.$name.'.'.$extend;
+        header('Location:'.$url.$link);
+        //print $result;
+
+        echo '<script>setTimeout(window.location.replace("http://tempcloud.ml"), 2000);alert("'.$result.'")</script>';
      }
    }
 ?>
@@ -49,9 +59,10 @@ ini_set('max_execution_time', 300);
     </div>
 
     <div class="main">
-        <span class="upload" onclick="uploader()">Upload</span><br>
+        <span class="upload" onclick="uploader()">Upload</span>
         <span class="download" onclick="downloader()">Download</span>
     </div>
+	<div class="mtnc" hidden>Website under maintanance. Please try after a few hours</div>
     <div class="uform">
         <div class="uformBox">
             <form action="index.php" method="POST" enctype="multipart/form-data">
