@@ -36,6 +36,7 @@ if (isset($_GET["link"])) {
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="Images/Logo.png" type="image/png">
+    <link rel="manifest" href="./manifest.webmanifest">
     <meta charset="UTF-8">
     <title>temp Cloud</title>
     <link rel="stylesheet" href="style.css" type="text/css">
