@@ -1,19 +1,15 @@
 <?php
 function shapeSpace_disk_usage() {
-	
 	$disktotal = disk_total_space ('/');
 	$diskfree  = disk_free_space  ('/');
 	$diskuse   = round (100 - (($diskfree / $disktotal) * 100)) .'%';
-	
 	return $diskuse;
 }
 function shapeSpace_server_uptime() {
-	
 	$uptime = floor(preg_replace ('/\.[0-9]+/', '', file_get_contents('/proc/uptime')) / 86400);
-	
 	return $uptime;
-	
 }
+$loadtime = sys_getloadavg();
 ini_set('upload_max_filesize', '200M');
 ini_set('post_max_size', '200M');
 ini_set('max_input_time', 300);
@@ -130,8 +126,6 @@ $return = 'http://tempcloud.ml?link=';
         </div>
       </div>
 
-
-
       <div class="modal fade" id="Download" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -162,6 +156,12 @@ $return = 'http://tempcloud.ml?link=';
         </div>
       </div>
 </body>
+
+<div class="container">
+  System load : <?php echo $loadtime[0]*100 ?>%
+  Mem Usage : <?php echo shapeSpace_disk_usage(); ?>
+  Uptime : <?php echo shapeSpace_server_uptime()*24; ?> Hours
+</div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
