@@ -21,9 +21,6 @@ ini_set('max_execution_time', 300);
 $url = 'http://nith.ml/api.php?input=';
 $return = 'http://tempcloud.ml?link=';
 
-if (isset($_GET["link"])) {
-	echo $_GET["link"];
-}
    if(isset($_POST['btn'])){
      $f_name=$_FILES['file']['name'];
      $t_name=$_FILES['file']['tmp_name'];
@@ -107,8 +104,9 @@ if (isset($_GET["link"])) {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+           <form action="index.php" method="POST" enctype="multipart/form-data">
             <div class="modal-body">
-            <form action="index.php" method="POST" enctype="multipart/form-data">
+            
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="customFile" name="file">
                     <label class="custom-file-label" for="customFile">Choose file</label>
@@ -122,13 +120,12 @@ if (isset($_GET["link"])) {
                       <label for="exampleInputPassword1">Number</label>
                       <input type="number" min="1" max="9999" class="form-control" name="room"  placeholder="1-9999">
                     </div>
-                  </form>
-
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-success" name="btn">Upload</button>
             </div>
+            </form>
           </div>
         </div>
       </div>
@@ -138,13 +135,13 @@ if (isset($_GET["link"])) {
       <div class="modal fade" id="Download" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
+          <form action="download.php" method="POST" enctype="multipart/form-data">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalCenterTitle">Download</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="download.php" method="POST" enctype="multipart/form-data">
             <div class="modal-body">
               <div class="form-group">
                 <small id="emailHelp" class="form-text text-muted">Enter the file name with extension type [.png, .pdf etc]</small>
@@ -155,22 +152,15 @@ if (isset($_GET["link"])) {
                 <label for="exampleInputPassword1">Number</label>
                 <input type="number" min="1" max="9999" class="form-control" name="room" placeholder="1-9999">
               </div>
-            </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-success" name="btn">Download</button>
             </div>
+            </form>
           </div>
         </div>
       </div>
-
-      <!--<div class="footer">
-          Current system load <?php
-          $loadtime = sys_getloadavg();
-          echo $loadtime*100;
-          ?>%
-      </div>-->
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
