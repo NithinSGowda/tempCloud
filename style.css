@@ -6,6 +6,7 @@ body{
 }
 .tempCloud{
     color: rgb(106, 255, 47);
+	font-size: 2em;
 }
 .jumbotron{
     background-color: rgb(0, 0, 0);
@@ -16,7 +17,7 @@ body{
     padding-bottom: 1.5em;
 }
 .lead{
-    color: rgb(141, 140, 140);
+    color: rgba(255, 196, 0, 0.712);
 }
 .nith2{
     text-align: start;
@@ -24,7 +25,11 @@ body{
 .steps{
     text-align: center;
     margin-bottom: 2em;
+    color: #28A745;
 }
 .modal-content{
     background-color: rgb(22, 22, 22);
+}
+.stats{
+    color: rgb(255, 196, 0);
 }

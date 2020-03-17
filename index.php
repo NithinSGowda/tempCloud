@@ -61,7 +61,7 @@ $return = 'http://tempcloud.ml?link=';
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           </ul>
           <form class="form-inline my-2 my-lg-0 myform">
-            <span class="nit1 mr-sm-2">Text Share</span>
+            <span class="nit1 mr-sm-2" style="color: rgb(255, 196, 0);">Text Share</span>
             <input class="form-control mr-sm-2" type="text" placeholder="Paste text here..."><br><br>
             <input class="form-control mr-sm-2" min="1" max="9999" type="number" placeholder="Number"><br><br>
             <button class="btn btn-success my-2 my-sm-0" type="submit">Share</button>
@@ -79,7 +79,9 @@ $return = 'http://tempcloud.ml?link=';
         <a class="btn btn-outline-success mr-5 btn-lg" href="#" role="button" data-toggle="modal" data-target="#Upload" type="button">&nbsp Upload &nbsp </a>
         <a class="btn btn-success btn-lg" href="#" role="button" data-toggle="modal" data-target="#Download" type="button">Download</a>
         <hr class="my-4">
-
+      	<div class="container">
+          <span class="stats">System load : </span><?php echo $loadtime[0]*100 ?>% <span class="stats">Mem Usage :</span> <?php echo shapeSpace_disk_usage(); ?> <span class="stats">Uptime :</span>  <?php echo shapeSpace_server_uptime()*24; ?> Hours
+        </div>
       </div>
 
       <div class="container">
@@ -157,11 +159,6 @@ $return = 'http://tempcloud.ml?link=';
       </div>
 </body>
 
-<div class="container">
-  System load : <?php echo $loadtime[0]*100 ?>%
-  Mem Usage : <?php echo shapeSpace_disk_usage(); ?>
-  Uptime : <?php echo shapeSpace_server_uptime()*24; ?> Hours
-</div>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
