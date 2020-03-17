@@ -32,7 +32,7 @@ $return = 'http://tempcloud.ml?link=';
      if($fupload){
         //$link = 'http://tempcloud.ml/uploads/'.$room.'/'.$name.'.'.$extend;
         //header('Location:'.$url.$link);
-        echo '<script>setTimeout(window.location.replace("http://tempcloud.ml"), 2000);alert("Done")</script>';
+        echo '<script>alert("File uploaded")</script>';
      }
    }
 ?>
@@ -49,8 +49,17 @@ $return = 'http://tempcloud.ml?link=';
     <meta name="description" content="Temporary Cloud Stoarage and Service">
     <meta name="keywords" content="tempcloud, nithin ,nithin s,Temporary Cloud, File sharing online">
     <meta name="author" content="Nithin S">
+	<meta property="og:site_name" content="tempCloud">
+    <meta property="og:title" content="World's fastest file transfer" />
+    <meta property="og:description" content="Temporary Cloud Stoarage and Service" />
+    <meta property="og:image:secure_url" itemprop="image" content="https://tempcloud.ml/Images/share.png">
+    <meta property="og:type" content="website" />
 </head>
 <body>
+	<!--<div class="alert alert-success" role="alert">
+        	File upload successful <a href="http://bit.ly/tempcloudinsta" class="alert-link">Follow me on Instagram</a>.
+    </div>-->
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#"><span class="h1 tempCloud">tempCloud</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,7 +89,7 @@ $return = 'http://tempcloud.ml?link=';
         <a class="btn btn-success btn-lg" href="#" role="button" data-toggle="modal" data-target="#Download" type="button">Download</a>
         <hr class="my-4">
       	<div class="container">
-          <span class="stats">System load : </span><?php echo $loadtime[0]*100 ?>% <span class="stats">Mem Usage :</span> <?php echo shapeSpace_disk_usage(); ?> <span class="stats">Uptime :</span>  <?php echo shapeSpace_server_uptime()*24; ?> Hours
+          <span class="stats">Server load : </span><?php echo $loadtime[0]*100 ?>% <span class="stats">&nbsp Disk Usage :</span> <?php echo shapeSpace_disk_usage(); ?> <span class="stats">&nbspServer uptime :</span>  <?php echo shapeSpace_server_uptime()*24; ?> Hours
         </div>
       </div>
 
@@ -157,6 +166,7 @@ $return = 'http://tempcloud.ml?link=';
           </div>
         </div>
       </div>
+		
 </body>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>

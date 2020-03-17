@@ -17,8 +17,7 @@
             die();
     }
     else{
-        http_response_code(404);
-        die();
+        header('Location : 404.html');
     }
 }
 ?>
