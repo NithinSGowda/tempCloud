@@ -1,4 +1,19 @@
 <?php
+function shapeSpace_disk_usage() {
+	
+	$disktotal = disk_total_space ('/');
+	$diskfree  = disk_free_space  ('/');
+	$diskuse   = round (100 - (($diskfree / $disktotal) * 100)) .'%';
+	
+	return $diskuse;
+}
+function shapeSpace_server_uptime() {
+	
+	$uptime = floor(preg_replace ('/\.[0-9]+/', '', file_get_contents('/proc/uptime')) / 86400);
+	
+	return $uptime;
+	
+}
 ini_set('upload_max_filesize', '200M');
 ini_set('post_max_size', '200M');
 ini_set('max_input_time', 300);
@@ -22,98 +37,144 @@ if (isset($_GET["link"])) {
         $extend=end((explode(".", $f_name)));
      $fupload=move_uploaded_file($t_name,$upload.'/'.$room.'/'.$name.'.'.$extend);
      if($fupload){
-     $link = 'http://tempcloud.ml/uploads/'.$room.'/'.$name.'.'.$extend;
-        header('Location:'.$url.$link);
-        //print $result;
-
-        echo '<script>setTimeout(window.location.replace("http://tempcloud.ml"), 2000);alert("'.$result.'")</script>';
+        //$link = 'http://tempcloud.ml/uploads/'.$room.'/'.$name.'.'.$extend;
+        //header('Location:'.$url.$link);
+        echo '<script>setTimeout(window.location.replace("http://tempcloud.ml"), 2000);alert("Done")</script>';
      }
    }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tempCloud</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="Images/Logo.png" type="image/png">
     <link rel="manifest" href="./manifest.webmanifest">
-    <meta charset="UTF-8">
-    <title>temp Cloud</title>
-    <link rel="stylesheet" href="style.css" type="text/css">
     <meta name="description" content="Temporary Cloud Stoarage and Service">
     <meta name="keywords" content="tempcloud, nithin ,nithin s,Temporary Cloud, File sharing online">
     <meta name="author" content="Nithin S">
-</head> 
+</head>
 <body>
-    <div class="title">
-        <div class="main-title">tempCloud</div>
-        <div class="sub-title">Temporary cloud storage for handy file sharing</div>
-    </div>
-
-    <div class="text">
-        <div class="t1">File transfers made easy</div>
-        <div class="t2">Just follow these simple steps below :<br>
-            1) Click on upload and choose your file, enter a random private room number [1 - 99999]<br>
-            2) On the reciever device click on download and enter the port number to download your file<br>
-            3) This a temporary cloud service, your files will be deleted if not downloaded for last <b>24hrs</b>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"><span class="h1 tempCloud">tempCloud</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          </ul>
+          <form class="form-inline my-2 my-lg-0 myform">
+            <span class="nit1 mr-sm-2">Text Share</span>
+            <input class="form-control mr-sm-2" type="text" placeholder="Paste text here..."><br><br>
+            <input class="form-control mr-sm-2" min="1" max="9999" type="number" placeholder="Number"><br><br>
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Share</button>
+          </form>
         </div>
-    </div>
+      </nav>
+      
+      <div class="jumbotron">
+        <h1>World's fastest file transfer</h1>
+        <p class="lead">Developed by Nithin S</p>
+        <hr class="my-4">
+        <hr class="my-4">
+        <hr class="my-4">
+        
+        <a class="btn btn-outline-success mr-5 btn-lg" href="#" role="button" data-toggle="modal" data-target="#Upload" type="button">&nbsp Upload &nbsp </a>
+        <a class="btn btn-success btn-lg" href="#" role="button" data-toggle="modal" data-target="#Download" type="button">Download</a>
+        <hr class="my-4">
 
-    <div class="main">
-        <span class="upload" onclick="uploader()">Upload</span>
-        <span class="download" onclick="downloader()">Download</span>
-    </div>
-	<div class="mtnc" hidden>Website under maintanance. Please try after a few hours</div>
-    <div class="uform">
-        <div class="uformBox">
+      </div>
+
+      <div class="container">
+          <h3 class="steps">How to use it</h1>
+            <p>
+                1) Click on upload and choose your file, enter a random private number [1 - 9999]<br>
+                2) On the reciever device click on download and enter the same name(with file extension) and number to download your file<br>
+                3) This is a temporary cloud service, your files will be deleted if not downloaded for last <b>48hrs</b>
+            </p>
+      </div>
+
+      <div class="modal fade" id="Upload" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Upload</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
             <form action="index.php" method="POST" enctype="multipart/form-data">
-            <input type="file" name="file" required><br>
-            <input type="text" name="name" placeholder="Enter the name of your file : (myfile)" required autofocus><br>
-            <input type="number" name="room" min="1" max="99999" placeholder="1-99999" required><br>
-            <input type="submit" class="submit" name="btn">
-        </form>
-    </div>
-    <div class="uclose" onclick="uclose()">X</div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile" name="file">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                  </div>
+                    <div class="form-group">
+                      <small id="emailHelp" class="form-text text-muted">We'll never share your files with anyone else.</small>
+                      <label for="exampleInputEmail1">File name</label>
+                      <input type="text" class="form-control file-input-name" name="name" placeholder="Name of your file">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Number</label>
+                      <input type="number" min="1" max="9999" class="form-control" name="room"  placeholder="1-9999">
+                    </div>
+                  </form>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-success" name="btn">Upload</button>
+            </div>
+          </div>
         </div>
-    <div class="dform">
-        <div class="dformBox">
+      </div>
+
+
+
+      <div class="modal fade" id="Download" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Download</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
             <form action="download.php" method="POST" enctype="multipart/form-data">
-            <input type="text" name="name" placeholder="Filename : (example.pdf)" required autofocus><br>
-            <input type="number" name="room" min="1" max="99999" placeholder="1-99999" required><br>
-            <input type="submit" class="submit" name="btn">
-        </form>
-    </div>
-    <div class="dclose" onclick="dclose()">X</div>
+            <div class="modal-body">
+              <div class="form-group">
+                <small id="emailHelp" class="form-text text-muted">Enter the file name with extension type [.png, .pdf etc]</small>
+                <label for="exampleInputEmail1">File name</label>
+                <input type="text" class="form-control file-input-name" name="name" placeholder="Name of your file">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Number</label>
+                <input type="number" min="1" max="9999" class="form-control" name="room" placeholder="1-9999">
+              </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-success" name="btn">Download</button>
+            </div>
+          </div>
         </div>
-        <div class="dev">
-        &copy; Developed by Nithin S. All rights reserved
-    </div>
+      </div>
 
-    <div class="tutorial">
-        <span class="done" onclick="tuthide()">Got it</span>
-        <div class="up">
-            <img src="Images/up.png" class="up-img" type="image/png">
-        </div>
-        <div class="mid">
-            <img src="Images/fast-forward.png" class="mid-img" type="image/png">
-        </div>
-        <div class="instructions-1">
-            Upload the file from any device by entering :<br>
-            1) File name (without extension type like .pdf)<br>
-            2) A private random room number.
-        </div>
-        <div class="instructions-2">
-            Download the file from any device by entering :<br>
-            1) File name (with extension type like .pdf)<br>
-            2) The same private room number provided during upload
-        </div>
-        <div class="down">
-            <img src="Images/down.png" class="down-img" type="image/png">
-        </div>
-    </div>
-
-
-    <script defer src="script.js"></script>
-
+      <!--<div class="footer">
+          Current system load <?php
+          $loadtime = sys_getloadavg();
+          echo $loadtime*100;
+          ?>%
+      </div>-->
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+<script defer src="script.js"></script>
 </html>
