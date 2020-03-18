@@ -6,7 +6,7 @@ function shapeSpace_disk_usage() {
 	return $diskuse;
 }
 function shapeSpace_server_uptime() {
-	$uptime = floor(preg_replace ('/\.[0-9]+/', '', file_get_contents('/proc/uptime')) / 86400);
+	$uptime = floor(preg_replace ('/\.[0-9]+/', '', file_get_contents('/proc/uptime')) / 3600);
 	return $uptime;
 }
 $loadtime = sys_getloadavg();
@@ -69,12 +69,17 @@ $return = 'http://tempcloud.ml?link=';
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           </ul>
-          <form class="form-inline my-2 my-lg-0 myform">
-            <span class="nit1 mr-sm-2" style="color: rgb(255, 196, 0);">Text Share</span>
-            <input class="form-control mr-sm-2" type="text" placeholder="Paste text here..."><br><br>
-            <input class="form-control mr-sm-2" min="1" max="9999" type="number" placeholder="Number"><br><br>
-            <button class="btn btn-success my-2 my-sm-0" type="submit">Share</button>
+          <form class="form-inline my-2 my-lg-0 myform" action="txtwrite.php" method="POST" enctype="multipart/form-data">
+            <!--<span class="nit1 mr-sm-2" style="color: rgb(255, 196, 0);">Text Share</span>-->
+            <input class="form-control mr-sm-2" type="text" placeholder="Paste text here..." name="txt"><br><br>
+            <input class="form-control mr-sm-2" min="1" max="9999" type="number" placeholder="Number" name="number"><br><br>
+            <button class="btn btn-success my-2 my-sm-0" type="submit" name="btn">Share text</button>
           </form>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <span class="form-inline my-2 my-lg-0" onsubmit="gettext()">
+            <input class="form-control mr-sm-2" min="1" max="9999" type="number" placeholder="Number" name="number-down" id="txt-retrieve"><br>
+            <button class="btn btn-success my-2 my-sm-0" type="submit" name="btn" onclick="gettext()">Get text</button>
+          </span>
         </div>
       </nav>
       
@@ -89,7 +94,7 @@ $return = 'http://tempcloud.ml?link=';
         <a class="btn btn-success btn-lg" href="#" role="button" data-toggle="modal" data-target="#Download" type="button">Download</a>
         <hr class="my-4">
       	<div class="container">
-          <span class="stats">Server load : </span><?php echo $loadtime[0]*100 ?>% <span class="stats">&nbsp Disk Usage :</span> <?php echo shapeSpace_disk_usage(); ?> <span class="stats">&nbspServer uptime :</span>  <?php echo shapeSpace_server_uptime()*24; ?> Hours
+          <span class="stats">Server load : </span><?php echo $loadtime[0]*100 ?>% <span class="stats">&nbsp Disk Usage :</span> <?php echo shapeSpace_disk_usage(); ?> <span class="stats">&nbspServer uptime :</span>  <?php echo shapeSpace_server_uptime(); ?> Hours
         </div>
       </div>
 
