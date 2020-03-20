@@ -6,7 +6,16 @@ $(document).ready(function () {
 
  function gettext(){
     var num = document.querySelector('#txt-retrieve').value;
-    var link = "http://tempcloud.ml/TEXT/" + num + ".txt";
-    console.log(link);
-    window.location.href = link;
- }
+    var display = document.getElementById("mycontent");
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "textget.php?num="+num);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState === 4 && this.status === 200) {
+        display.innerHTML = this.responseText;
+      } else {
+        display.innerHTML = "Loading...";
+      };
+    }
+  }

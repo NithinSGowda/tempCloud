@@ -78,7 +78,7 @@ $return = 'http://tempcloud.ml?link=';
           &nbsp;&nbsp;&nbsp;&nbsp;
           <span class="form-inline my-2 my-lg-0" onsubmit="gettext()">
             <input class="form-control mr-sm-2" min="1" max="9999" type="number" placeholder="Number" name="number-down" id="txt-retrieve"><br>
-            <button class="btn btn-success my-2 my-sm-0" type="submit" name="btn" onclick="gettext()">Get text</button>
+            <button class="btn btn-success my-2 my-sm-0" name="btn" role="button" data-toggle="modal" data-target="#TEXT" type="button" onclick="gettext()">Get text</button>
           </span>
         </div>
       </nav>
@@ -97,7 +97,6 @@ $return = 'http://tempcloud.ml?link=';
           <span class="stats">Server load : </span><?php echo $loadtime[0]*100 ?>% <span class="stats">&nbsp Disk Usage :</span> <?php echo shapeSpace_disk_usage(); ?> <span class="stats">&nbspServer uptime :</span>  <?php echo shapeSpace_server_uptime(); ?> Hours
         </div>
       </div>
-
       <div class="container">
           <h3 class="steps">How to use it</h1>
             <p>
@@ -106,6 +105,29 @@ $return = 'http://tempcloud.ml?link=';
                 3) This is a temporary cloud service, your files will be deleted if not downloaded for last <b>48hrs</b>
             </p>
       </div>
+
+
+      <div class="modal fade" id="TEXT" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Here's your text</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <textarea name="text" class="form-control" id="mycontent"></textarea>
+          </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success" name="btn">Copy to clipboard</button>
+          </div>
+          </div>
+        </div>
+      </div>
+
+
 
       <div class="modal fade" id="Upload" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
