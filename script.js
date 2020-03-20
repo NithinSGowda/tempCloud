@@ -2,9 +2,7 @@ $(document).ready(function () {
     bsCustomFileInput.init();
 })
 
- const alrt = "<div class=\"alert alert-success\" role=\"alert\">File upload successful <a href=\"http://bit.ly/tempcloudinsta\" class=\"alert-link\">Follow me on Instagram.</a></div>";
-
- function gettext(){
+function gettext(){
     var num = document.querySelector('#txt-retrieve').value;
     var display = document.getElementById("mycontent");
     var xmlhttp = new XMLHttpRequest();
@@ -18,4 +16,13 @@ $(document).ready(function () {
         display.innerHTML = "Loading...";
       };
     }
-  }
+}
+
+
+function copytoCB(){
+    console.log(document.getElementById("mycontent").textContent);
+    var copyText = document.getElementById("mycontent");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+}
