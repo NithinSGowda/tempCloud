@@ -35,6 +35,41 @@ $return = 'http://tempcloud.ml?link=';
         echo '<script>alert("File uploaded")</script>';
      }
    }
+
+
+	$curl = curl_init();
+
+curl_setopt_array($curl, array(
+	CURLOPT_URL => "https://covid-193.p.rapidapi.com/statistics?country=India",
+	CURLOPT_RETURNTRANSFER => true,
+	CURLOPT_FOLLOWLOCATION => true,
+	CURLOPT_ENCODING => "",
+	CURLOPT_MAXREDIRS => 10,
+	CURLOPT_TIMEOUT => 30,
+	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	CURLOPT_CUSTOMREQUEST => "GET",
+	CURLOPT_HTTPHEADER => array(
+		"x-rapidapi-host: covid-193.p.rapidapi.com",
+		"x-rapidapi-key: 3230f449d2msh85d69f60dd39ee8p101b93jsn1b8b3dcb6164"
+	),
+));
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+	echo "cURL Error #:" . $err;
+} else {
+	$obj2 = stripslashes(html_entity_decode($response));
+	$obj = json_decode($obj2,true);
+	//$result = printValues($obj);
+	//echo $result["response"];
+	$corona = $obj["response"]["0"]["cases"]["active"];
+	$death = $obj["response"]["0"]["deaths"]["total"];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,7 +119,7 @@ $return = 'http://tempcloud.ml?link=';
       </nav>
       
       <div class="jumbotron">
-        <h1>World's fastest file transfer</h1>
+        <h1>Fastest and simplest file transfer</h1>
         <p class="lead">Developed by Nithin S</p>
         <hr class="my-4">
         <hr class="my-4">
@@ -95,6 +130,13 @@ $return = 'http://tempcloud.ml?link=';
         <hr class="my-4">
       	<div class="container">
           <span class="stats">Server load : </span><?php echo $loadtime[0]*100 ?>% <span class="stats">&nbsp Disk Usage :</span> <?php echo shapeSpace_disk_usage(); ?> <span class="stats">&nbspServer uptime :</span>  <?php echo shapeSpace_server_uptime(); ?> Hours
+        </div>
+      <br>
+      <div class="container">
+      <span class="stats">Corona in India LIVE : </span><?php print_r($corona);?> cases | <?php print_r($death);?> deaths
+        </div>
+      <div class="container">
+      <span class="stats">#STAY HOME STAY SAFE</span>
         </div>
       </div>
       <div class="container">
