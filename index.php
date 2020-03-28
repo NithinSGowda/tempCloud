@@ -66,7 +66,7 @@ if ($err) {
 	$obj = json_decode($obj2,true);
 	//$result = printValues($obj);
 	//echo $result["response"];
-	$corona = $obj["response"]["0"]["cases"]["active"];
+	$corona = $obj["response"]["0"]["cases"]["total"];
 	$death = $obj["response"]["0"]["deaths"]["total"];
 }
 
@@ -184,22 +184,29 @@ if ($err) {
             <div class="modal-body">
             
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile" name="file">
+                    <input type="file" class="custom-file-input" id="customFile" name="file" required>
                     <label class="custom-file-label" for="customFile">Choose file</label>
                   </div>
                     <div class="form-group">
                       <small id="emailHelp" class="form-text text-muted">We'll never share your files with anyone else.</small>
                       <label for="exampleInputEmail1">File name</label>
-                      <input type="text" class="form-control file-input-name" name="name" placeholder="Name of your file">
+                      <input type="text" class="form-control file-input-name" name="name" placeholder="Name of your file" required>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Number</label>
-                      <input type="number" min="1" max="9999" class="form-control" name="room"  placeholder="1-9999">
+                      <input type="number" min="1" max="9999" class="form-control" name="room"  placeholder="1-9999" required>
                     </div>
+            <div class="spinner">
+  				<div class="rect1"></div>
+  				<div class="rect2"></div>
+  				<div class="rect3"></div>
+  				<div class="rect4"></div>
+  				<div class="rect5"></div>
+			</div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-success" name="btn">Upload</button>
+              <button type="submit" class="btn btn-success" name="btn" onclick="loader()">Upload</button>
             </div>
             </form>
           </div>
@@ -220,11 +227,11 @@ if ($err) {
               <div class="form-group">
                 <small id="emailHelp" class="form-text text-muted">Enter the file name with extension type [.png, .pdf etc]</small>
                 <label for="exampleInputEmail1">File name</label>
-                <input type="text" class="form-control file-input-name" name="name" placeholder="Name of your file">
+                <input type="text" class="form-control file-input-name" name="name" placeholder="Name of your file" required>
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Number</label>
-                <input type="number" min="1" max="9999" class="form-control" name="room" placeholder="1-9999">
+                <input type="number" min="1" max="9999" class="form-control" name="room" placeholder="1-9999" required>
               </div>
             </div>
             <div class="modal-footer">
