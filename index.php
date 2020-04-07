@@ -147,6 +147,7 @@ if ($err) {
                 3) This is a temporary cloud service, your files will be deleted if not downloaded for last <b>48hrs</b>
             </p>
       </div>
+      
 
 
       <div class="modal fade" id="TEXT" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
