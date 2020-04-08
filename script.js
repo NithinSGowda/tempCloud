@@ -20,11 +20,17 @@ function gettext(){
 
 
 function copytoCB(){
-    console.log(document.getElementById("mycontent").textContent);
     var copyText = document.getElementById("mycontent");
     copyText.select();
     copyText.setSelectionRange(0, 99999);
     document.execCommand("copy");
+}
+
+function copytoCB2(){
+  var copyText = document.getElementById("mylink");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
 }
 
 function loader(){
