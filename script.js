@@ -27,6 +27,11 @@ function copytoCB(){
     document.execCommand("copy");
 }
 
+function loader(){
+	document.querySelector('.spinner').style.display='block';
+	console.log("Done");
+}
+
 function getlink(){
   if(document.getElementById("fileNumber").value=="" || document.getElementById("fileName").value==""){
     document.getElementById("mylink").innerHTML="Please enter FILENAME and NUMBER properly";
