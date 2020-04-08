@@ -171,6 +171,27 @@ if ($err) {
       </div>
 
 
+      <div class="modal fade" id="link" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Here's your sharable link</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <textarea name="text" class="form-control" id="mylink"></textarea>
+          </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success" name="btn" data-dismiss="modal" onclick="copytoCB()">Copy to clipboard</button>
+          </div>
+          </div>
+        </div>
+      </div>
+
+
 
       <div class="modal fade" id="Upload" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -228,16 +249,17 @@ if ($err) {
               <div class="form-group">
                 <small id="emailHelp" class="form-text text-muted">Enter the file name with extension type [.png, .pdf etc]</small>
                 <label for="exampleInputEmail1">File name</label>
-                <input type="text" class="form-control file-input-name" name="name" placeholder="Name of your file" required>
+                <input type="text" class="form-control file-input-name" name="name" placeholder="Name of your file" required id="fileName">
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Number</label>
-                <input type="number" min="1" max="9999" class="form-control" name="room" placeholder="1-9999" required>
+                <input type="number" min="1" max="9999" class="form-control" name="room" placeholder="1-9999" required id="fileNumber">
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-success" name="btn">Download</button>
+              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal" role="button" data-toggle="modal" data-target="#link" onclick="getlink()">Get sharable link</button>
+              <button type="submit" class="btn btn-success btn-sm" name="btn">Download</button>
             </div>
             </form>
           </div>

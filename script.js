@@ -26,3 +26,12 @@ function copytoCB(){
     copyText.setSelectionRange(0, 99999);
     document.execCommand("copy");
 }
+
+function getlink(){
+  if(document.getElementById("fileNumber").value=="" || document.getElementById("fileName").value==""){
+    document.getElementById("mylink").innerHTML="Please enter FILENAME and NUMBER properly";
+  }
+  else{
+    document.getElementById("mylink").innerHTML= "https://tempcloud.ml/uploads/" + document.getElementById("fileNumber").value + "/" + document.getElementById("fileName").value
+  }
+}
