@@ -69,208 +69,480 @@ if ($err) {
 	$corona = $obj["response"]["0"]["cases"]["total"];
 	$death = $obj["response"]["0"]["deaths"]["total"];
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tempCloud</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="Images/Logo.png" type="image/png">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>tempCloud</title>
+  <meta content="Temporary Cloud Storage and File Sharing Service" name="description">
+  <meta content="tempcloud, nithin ,nithin s,Temporary Cloud, File sharing online" name="keywords">
+  <link href="assets/img/Logo.png" rel="icon">
+  <link href="assets/img/Logo.png" rel="apple-touch-icon">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+
+	<link rel="icon" href="assets/img/Logo.png" type="image/png">
     <link rel="manifest" href="./manifest.webmanifest">
-    <meta name="description" content="Temporary Cloud Stoarage and Service">
-    <meta name="keywords" content="tempcloud, nithin ,nithin s,Temporary Cloud, File sharing online">
     <meta name="author" content="Nithin S">
 	<meta property="og:site_name" content="tempCloud">
-    <meta property="og:title" content="World's fastest file transfer" />
-    <meta property="og:description" content="Temporary Cloud Stoarage and Service" />
-    <meta property="og:image:secure_url" itemprop="image" content="https://tempcloud.ml/Images/share.png">
+    <meta property="og:title" content="Temporary Cloud Storage and File Sharing Service" name="description" />
+    <meta property="og:description" content="Temporary Cloud Storage and File Sharing Service" />
+    <meta property="og:image" itemprop="image" content="https://tempcloud.ml/assets/img/Logo.png">
     <meta property="og:type" content="website" />
+	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+	<script>
+  	var OneSignal = window.OneSignal || [];
+  	OneSignal.push(function() {
+    OneSignal.init({
+      appId: "53339a09-c5e8-4f59-b0f7-93fa2fcfb7a0",
+    });
+  	});
+</script>
 </head>
+
 <body>
-	<!--<div class="alert alert-success" role="alert">
-        	File upload successful <a href="http://bit.ly/tempcloudinsta" class="alert-link">Follow me on Instagram</a>.
-    </div>-->
+  <header id="header" class="fixed-top">
+    <div class="container">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><span class="h1 tempCloud">tempCloud</span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          </ul>
-          <form class="form-inline my-2 my-lg-0 myform" action="txtwrite.php" method="POST" enctype="multipart/form-data">
-            <!--<span class="nit1 mr-sm-2" style="color: rgb(255, 196, 0);">Text Share</span>-->
-            <input class="form-control mr-sm-2" type="text" placeholder="Paste text here..." name="txt"><br><br>
-            <input class="form-control mr-sm-2" min="1" max="9999" type="number" placeholder="Number" name="number"><br><br>
-            <button class="btn btn-success my-2 my-sm-0" type="submit" name="btn">Share text</button>
-          </form>
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <span class="form-inline my-2 my-lg-0" onsubmit="gettext()">
-            <input class="form-control mr-sm-2" min="1" max="9999" type="number" placeholder="Number" name="number-down" id="txt-retrieve"><br>
-            <button class="btn btn-success my-2 my-sm-0" name="btn" role="button" data-toggle="modal" data-target="#TEXT" type="button" onclick="gettext()">Get text</button>
-          </span>
-        </div>
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="#header"><span>tempCloud</span></a></h1>
+      </div>
+
+      <nav class="main-nav float-right d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="#intro">Home</a></li>
+          <li><a href="#about">How it works</a></li>
+          <li><a href="#upload">Upload</a></li>
+          <li><a href="#download">Download</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
       </nav>
-      
-      <div class="jumbotron">
-        <h1>Fastest and simplest file transfer</h1>
-        <p class="lead">Developed by Nithin S</p>
-        <hr class="my-4">
-        <hr class="my-4">
-        <hr class="my-4">
-        
-        <a class="btn btn-outline-success mr-5 btn-lg" href="#" role="button" data-toggle="modal" data-target="#Upload" type="button">&nbsp Upload &nbsp </a>
-        <a class="btn btn-success btn-lg" href="#" role="button" data-toggle="modal" data-target="#Download" type="button">Download</a>
-        <hr class="my-4">
-      	<div class="container">
-          <span class="stats">Server load : </span><?php echo $loadtime[0]*100 ?>% <span class="stats">&nbsp Disk Usage :</span> <?php echo shapeSpace_disk_usage(); ?> <span class="stats">&nbspServer uptime :</span>  <?php echo shapeSpace_server_uptime(); ?> Hours
-        </div>
-      <br>
-      <div class="container">
-      <span class="stats">Corona in India LIVE : </span><?php print_r($corona);?> cases | <?php print_r($death);?> deaths
-        </div>
-      <div class="container">
-      <span class="stats">#STAY HOME STAY SAFE</span>
+
+    </div>
+  </header>
+
+  <section id="intro" class="clearfix">
+    <div class="container">
+
+      <div class="intro-img">
+        <img src="assets/img/fast.png" alt="" class="img-fluid">
+      </div>
+
+      <div class="intro-info">
+        <h2>We move<br>your files<br>over the internet</h2>
+        <div>
+          <a href="#upload" class="btn-get-started scrollto">Upload</a>
+          <a href="#download" class="btn-services scrollto">Download</a>
         </div>
       </div>
+
+    </div>
+  </section>
+
+  <main id="main">
+    <section id="about">
       <div class="container">
-          <h3 class="steps">How to use it</h1>
+
+        <header class="section-header">
+          <h3>How it works</h3>
+          <p>Sharing files on tempcloud is easier than ever</p>
+        </header>
+
+        <div class="row about-container">
+
+          <div class="col-lg-6 content order-lg-1 order-2">
             <p>
-                1) Click on upload and choose your file, enter a random private number [1 - 9999]<br>
-                2) On the reciever device click on download and enter the same name(with file extension) and number to download your file<br>
-                3) This is a temporary cloud service, your files will be deleted if not downloaded for last <b>48hrs</b>
+              Just follow these simple steps to share your files
             </p>
-      </div>
-      
 
-
-      <div class="modal fade" id="TEXT" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Here's your text</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <div class="icon-box wow fadeInUp">
+              <div class="icon"><i class="fa fa-cloud-upload"></i></div>
+              <h4 class="title"><a href="#upload">Upload</a></h4>
+              <p class="description">Click on upload and choose your file, enter a random private number [1 - 9999]<br>Remember to enter the filename <b>without</b> file extension [,pdf , .png , etc..]</p>
             </div>
-            <div class="modal-body">
-            <textarea name="text" class="form-control" id="mycontent"></textarea>
+
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+              <div class="icon"><i class="fa fa-cloud-download"></i></div>
+              <h4 class="title"><a href="#download">Download</a></h4>
+              <p class="description">On the reciever device click on download and enter the same name(with file extension) and number to download your file<br>Remember to enter the filename <b>with</b> file extension [,pdf , .png , etc..]</p>
+            </div>
+
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+              <div class="icon"><i class="fa fa-exclamation-circle"></i></div>
+              <h4 class="title">Note</h4>
+              <p class="description">This is a temporary cloud service, your files will be deleted if not downloaded for last <b>48hrs</b></p>
+            </div>
+
           </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-success" name="btn" data-dismiss="modal" onclick="copytoCB()">Copy to clipboard</button>
-          </div>
+
+          <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
+            <img src="assets/img/main-header.png" class="img-fluid" alt="">
           </div>
         </div>
-      </div>
 
+        <section>
+          <div class="container">
+            <header class="section-header"><h3><hr></h3></header>
+            <div class="row about-container">
+    
+              <div class="col-lg-6 content order-lg-1 order-2" id="upload">
+                <h3><b>Upload</b></h3>
 
-      <div class="modal fade" id="link" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Here's your sharable link</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+                <form action="index.php" method="POST" enctype="multipart/form-data">
+                  <div class="modal-body">
+                  
+                      <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="customFile" name="file" required>
+                          <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                          <div class="form-group">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your files with anyone else.</small>
+                            <label for="exampleInputEmail1">File name</label>
+                            <input type="text" class="form-control file-input-name" name="name" placeholder="Name of your file" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">Number</label>
+                            <input type="number" min="1" max="9999" class="form-control" name="room"  placeholder="1-9999" required>
+                          </div>
+                  <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
             </div>
-            <div class="modal-body">
-            <textarea name="text" class="form-control" id="mylink"></textarea>
-          </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-success" name="btn" data-dismiss="modal" onclick="copytoCB2()">Copy to clipboard</button>
-          </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="modal fade" id="Upload" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Upload</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-           <form action="index.php" method="POST" enctype="multipart/form-data">
-            <div class="modal-body">
-            
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile" name="file" required>
-                    <label class="custom-file-label" for="customFile">Choose file</label>
                   </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" name="btn" onclick="loader()">Upload</button>
+                  </div>
+                  </form>    
+              </div>
+
+
+
+
+              <div class="col-lg-6 content order-lg-1 order-2" id="download">
+                <h3><b>Download</b></h3>
+                <form action="download.php" method="POST" enctype="multipart/form-data">
+                  <div class="modal-body">
                     <div class="form-group">
-                      <small id="emailHelp" class="form-text text-muted">We'll never share your files with anyone else.</small>
+                      <small id="emailHelp" class="form-text text-muted">Enter the file name with extension type [.png, .pdf etc]</small>
                       <label for="exampleInputEmail1">File name</label>
-                      <input type="text" class="form-control file-input-name" name="name" placeholder="Name of your file" required>
+                      <input type="text" class="form-control file-input-name" name="name" placeholder="Name of your file" required id="fileName">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Number</label>
-                      <input type="number" min="1" max="9999" class="form-control" name="room"  placeholder="1-9999" required>
+                      <input type="number" min="1" max="9999" class="form-control" name="room" placeholder="1-9999" required id="fileNumber">
                     </div>
-            <div class="spinner">
-  				<div class="rect1"></div>
-  				<div class="rect2"></div>
-  				<div class="rect3"></div>
-  				<div class="rect4"></div>
-  				<div class="rect5"></div>
-			</div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-success" name="btn" onclick="loader()">Upload</button>
-            </div>
-            </form>
-          </div>
-        </div>
-      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal" role="button" data-toggle="modal" data-target="#link" onclick="getlink()">Get sharable link</button>
+                    <button type="submit" class="btn btn-success" name="btn">Download</button>
+                  </div>
+                  </form>   
+              </div>
+        </section>
+        <hr>
 
-      <div class="modal fade" id="Download" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-          <form action="download.php" method="POST" enctype="multipart/form-data">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Download</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="form-group">
-                <small id="emailHelp" class="form-text text-muted">Enter the file name with extension type [.png, .pdf etc]</small>
-                <label for="exampleInputEmail1">File name</label>
-                <input type="text" class="form-control file-input-name" name="name" placeholder="Name of your file" required id="fileName">
+
+
+
+
+
+
+
+
+        <div class="row about-extra">
+          <div class="col-lg-6 wow fadeInUp">
+            <img src="assets/img/sec.png" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
+            <h4>Highly secure file transfer</h4>
+            <p>
+              Your files are always safe with us
+            </p>
+            <p>
+              We ensure that your files are accessible only by you
+            </p>
+          </div>
+        </div>
+
+        <div class="row about-extra">
+          <div class="col-lg-6 wow fadeInUp order-1 order-lg-2">
+            <img src="assets/img/hiw.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
+            <h4>Fastest and most Efficient file transfer</h4>
+            <p>
+              Sharing files on tempCloud is easier than sharing them on any other platform
+            </p>
+            <p>
+              Speed guaranteed with our servers having over 350Mbps network connection
+            </p>
+            <p>
+              99.99% server uptime as promised 
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="services" class="section-bg">
+      
+    </section>
+
+    <section id="why-us" class="wow fadeIn">
+      <div class="container">
+        <header class="section-header">
+          <h3>Why choose us?</h3>
+          <p>Sharing files on tempcloud is easier than ever</p>
+        </header>
+
+        <div class="row row-eq-height justify-content-center">
+
+          <div class="col-lg-4 mb-4">
+            <div class="card wow bounceInUp">
+              <i class="fa fa-fast-forward"></i>
+              <div class="card-body">
+                <h5 class="card-title">Fast</h5>
+                <p class="card-text">Speed guaranteed with our servers having over 350Mbps network connection</p>
               </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Number</label>
-                <input type="number" min="1" max="9999" class="form-control" name="room" placeholder="1-9999" required id="fileNumber">
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4">
+            <div class="card wow bounceInUp">
+              <i class="fa fa-lock"></i>
+              <div class="card-body">
+                <h5 class="card-title">Secure</h5>
+                <p class="card-text">We follow highest safety standards to ensure that your files are safe with us</p>
               </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-outline-primary btn-sm" data-dismiss="modal" role="button" data-toggle="modal" data-target="#link" onclick="getlink()">Get sharable link</button>
-              <button type="submit" class="btn btn-success btn-sm" name="btn">Download</button>
+          </div>
+
+          <div class="col-lg-4 mb-4">
+            <div class="card wow bounceInUp">
+              <i class="fa fa-tachometer"></i>
+              <div class="card-body">
+                <h5 class="card-title">Reliable</h5>
+                <p class="card-text">99.99% server uptime as promised</p>
+              </div>
             </div>
-            </form>
+          </div>
+
+        </div>
+
+        <div class="row counters">
+
+          <div class="col-lg-4 col-6 text-center">
+            <span><?php echo $loadtime[0]*100 ?>%</span>
+            <p>Server load</p>
+          </div>
+
+          <div class="col-lg-4 col-6 text-center">
+            <span><?php echo shapeSpace_disk_usage(); ?></span>
+            <p>Disk Usage</p>
+          </div>
+
+          <div class="col-lg-4 col-12 text-center">
+            <span><?php echo shapeSpace_server_uptime(); ?> Hours</span>
+            <p>Server uptime</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container-fluid">
+
+        <div class="section-header">
+          <h3>Reach out to us</h3>
+        </div>
+
+        <div class="row wow fadeInUp">
+
+
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-md-5 info">
+                <i class="ion-ios-location-outline"></i>
+                <p>Hassan, Karnataka - 573202</p>
+              </div>
+              <div class="col-md-4 info">
+                <i class="ion-ios-email-outline"></i>
+                <p>oneandonlytobe@gmail.com</p>
+              </div>
+              <div class="col-md-3 info">
+                <i class="ion-ios-telephone-outline"></i>
+                <p>+919481543420</p>
+              </div>
+            </div>
+
+            <div class="form">
+              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                <div class="form-row">
+                  <div class="form-group col-lg-6">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <div class="validate"></div>
+                  </div>
+                  <div class="form-group col-lg-6">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                    <div class="validate"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <div class="validate"></div>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                  <div class="validate"></div>
+                </div>
+                <div class="mb-3">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                </div>
+                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 footer-info">
+            <h3>tempCloud</h3>
+            <p>Temporary Cloud Stoarage and Service</p>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li class="active"><a href="#intro">Home</a></li>
+          <li><a href="#about">How it works</a></li>
+          <li><a href="#upload">Upload</a></li>
+          <li><a href="#download">Download</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-contact">
+            <h4>Contact Us</h4>
+            <p>
+              <strong>Phone:</strong> +919481543420<br>
+              <strong>Email:</strong> oneandonlytobe@gmail.com<br>
+            </p>
+
+            <div class="social-links">
+              <a href="https://twitter.com/Techin_Studio" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="https://www.facebook.com/hackernithin" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="https://www.instagram.com/nithin_s.gowda/" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/NithinSGowda" class="linkedin"><i class="fa fa-linkedin"></i></a>
+              <a href="https://www.github.com/NithinSGowda" class="GitHib"><i class="fa fa-github"></i></a>
+            </div>
+
           </div>
         </div>
       </div>
-		
+    </div>
+
+
+    <div class="modal fade" id="TEXT" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Here's your text</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <textarea name="text" class="form-control" id="mycontent"></textarea>
+        </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success" name="btn" data-dismiss="modal" onclick="copytoCB()">Copy to clipboard</button>
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="link" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Here's your sharable link</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <textarea name="text" class="form-control" id="mylink"></textarea>
+        </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success" name="btn" data-dismiss="modal" onclick="copytoCB2()">Copy to clipboard</button>
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="container">
+      <div class="copyright">
+        <span style="color: #00428A;">&copy; Copyright <strong>NewBiz</strong>. All Rights Reserved</span>
+      </div>
+      <div class="credits">
+        Developed by <a href="https://www.instagram.com/nithin_s.gowda/">NithinSGowda</a><br>
+        <span style="color: #00428A;"> Designed by <a href="https://bootstrapmade.com/" style="color: #00428A;">BootstrapMade</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/counterup/counterup.min.js"></script>
+  <script src="assets/vendor/mobile-nav/mobile-nav.js"></script>
+  <script src="assets/vendor/wow/wow.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="assets/vendor/venobox/venobox.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+
 </body>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
-<script defer src="script.js"></script>
 </html>
