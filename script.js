@@ -38,11 +38,30 @@ function loader(){
 	console.log("Done");
 }
 
+// function getlink(){
+//   if(document.getElementById("fileNumber").value=="" || document.getElementById("fileName").value==""){
+//     document.getElementById("mylink").innerHTML="Please enter FILENAME and NUMBER properly";
+//   }
+//   else{
+//     document.getElementById("mylink").innerHTML= "https://tempcloud.ml/uploads/" + document.getElementById("fileNumber").value + "/" + document.getElementById("fileName").value
+//   }
+// }
 function getlink(){
   if(document.getElementById("fileNumber").value=="" || document.getElementById("fileName").value==""){
     document.getElementById("mylink").innerHTML="Please enter FILENAME and NUMBER properly";
   }
   else{
-    document.getElementById("mylink").innerHTML= "https://tempcloud.ml/uploads/" + document.getElementById("fileNumber").value + "/" + document.getElementById("fileName").value
+  	var request;
+	if(window.XMLHttpRequest)
+    	request = new XMLHttpRequest();
+    	//request = new ActiveXObject("Microsoft.XMLHTTP");
+		request.open('GET', "https://tempcloud.ml/uploads/" + document.getElementById("fileNumber").value + "/" + document.getElementById("fileName").value , false);
+		request.send();
+		if (request.status === 404) {
+   		 	document.getElementById("mylink").innerHTML="File doesn't exist. \n Please enter FILENAME and NUMBER properly";
+		}
+    	else{
+        	document.getElementById("mylink").innerHTML= "https://tempcloud.ml/uploads/" + document.getElementById("fileNumber").value + "/" + document.getElementById("fileName").value
+        }
   }
 }
