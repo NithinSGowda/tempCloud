@@ -7,12 +7,12 @@
     "description": "Temporary cloud storage for handy file sharing",
     "icons": [
       {
-        "src": "Images/512.png",
+        "src": "assets/img/Logo.png",
         "sizes": "512x512",
         "type": "image/png"
       },
       {
-        "src": "Images/192.png",
+        "src": "assets/img/Logo.png",
         "sizes": "192x192",
         "type": "image/png"
       }
