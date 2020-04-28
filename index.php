@@ -1,4 +1,7 @@
 <?php
+
+
+
 function shapeSpace_disk_usage() {
 	$disktotal = disk_total_space ('/');
 	$diskfree  = disk_free_space  ('/');
@@ -29,6 +32,7 @@ $return = 'http://tempcloud.ml?link=';
         }
         $extend=end((explode(".", $f_name)));
      $fupload=move_uploaded_file($t_name,$upload.'/'.$room.'/'.$name.'.'.$extend);
+   	 //encryptFile($upload.'/'.$room.'/'.$name.'.'.$extend, $room, $upload.'/'.$room.'/'.$name.'.'.$extend);
      if($fupload){
         //$link = 'http://tempcloud.ml/uploads/'.$room.'/'.$name.'.'.$extend;
         //header('Location:'.$url.$link);
@@ -73,11 +77,22 @@ if ($err) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123408794-2"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+
+  		gtag('config', 'UA-123408794-2');
+	</script>
+
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>tempCloud</title>
   <meta content="Temporary Cloud Storage and File Sharing Service" name="description">
   <meta content="tempcloud, nithin ,nithin s,Temporary Cloud, File sharing online" name="keywords">
+  <meta name="google-signin-client_id" content="847443693125-ifoo994vmi01iu1lnfnigldtvd1qdgt2.apps.googleusercontent.com">
   <link href="assets/img/Logo.png" rel="icon">
   <link href="assets/img/Logo.png" rel="apple-touch-icon">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
@@ -113,7 +128,7 @@ if ($err) {
     <div class="container">
 
       <div class="logo float-left">
-        <h1 class="text-light"><a href="#header"><span>tempCloud</span></a></h1>
+        <h1 class="text-light"><a href="https://tempcloud.ml"><span>tempCloud</span></a></h1>
       </div>
 
       <nav class="main-nav float-right d-none d-lg-block">
@@ -124,6 +139,9 @@ if ($err) {
           <li><a href="#download">Download</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#contact">Contact Us</a></li>
+          <li class="g-signin2" data-onsuccess="onSignIn"></li>
+          <li><a href="#" onclick="signOut();">Sign out</a></li>
+          
         </ul>
       </nav>
 
@@ -142,6 +160,7 @@ if ($err) {
         <div>
           <a href="#upload" class="btn-get-started scrollto">Upload</a>
           <a href="#download" class="btn-services scrollto">Download</a>
+          <a href="#textShare" class="btn-services scrollto">Text-Share</a>
         </div>
       </div>
 
@@ -211,7 +230,8 @@ if ($err) {
                           </div>
                           <div class="form-group">
                             <label for="exampleInputPassword1">Number</label>
-                            <input type="number" min="1" max="9999" class="form-control" name="room"  placeholder="1-9999" required>
+                            <input type="number" min="1" class="form-control uroomNumber" name="room"  placeholder="1-9999" required>
+                          	<small id="roomHelp" class="form-text text-muted">*Automatically updates room number if signed-in</small>
                           </div>
                   <div class="spinner">
                 <div class="rect1"></div>
@@ -222,7 +242,7 @@ if ($err) {
             </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" name="btn" onclick="loader()">Upload</button>
+                    <button type="submit" class="btn btn-primary" name="btn" onclick="loader()">Upload</button>
                   </div>
                   </form>    
               </div>
@@ -241,12 +261,13 @@ if ($err) {
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Number</label>
-                      <input type="number" min="1" max="9999" class="form-control" name="room" placeholder="1-9999" required id="fileNumber">
+                      <input type="number" min="1" class="form-control droomNumber" name="room" placeholder="1-9999" required id="fileNumber">
+                      <small id="roomHelp" class="form-text text-muted">*Automatically updates room number if signed-in</small>
                     </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal" role="button" data-toggle="modal" data-target="#link" onclick="getlink()">Get sharable link</button>
-                    <button type="submit" class="btn btn-success" name="btn">Download</button>
+                    <button type="submit" class="btn btn-primary" name="btn">Download</button>
                   </div>
                   </form>   
               </div>
@@ -299,10 +320,57 @@ if ($err) {
       </div>
     </section>
 
-    <section id="services" class="section-bg">
-      
-    </section>
+      <section>
+          <div class="container">
+            <header class="section-header"><h3><hr></h3></header>
+            <div class="row about-container">
+    
+              <div class="col-lg-6 content order-lg-1 order-2" id="textShare">
+                <h3><b>Share Text</b></h3>
 
+                <form action="txtwrite.php" method="POST" enctype="multipart/form-data">
+                  <div class="modal-body">
+                          <div class="form-group">
+                            <small id="emailHelp" class="form-text text-muted">Enter text/link/anything which you want to share</small>
+                            <label for="exampleInputEmail1">Textarea</label>
+                            <input type="text" class="form-control file-input-name" name="txt" placeholder="Paste text here .." required>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">Number</label>
+                            <input type="number" min="1" class="form-control" name="number"  placeholder="1-9999" required>
+                          </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-outline-primary" name="btn" onclick="loader()">Share</button>
+                  </div>
+                  </form>    
+              </div>
+
+
+
+
+              <div class="col-lg-6 content order-lg-1 order-2" id="download">
+                <h3><b>Get Text</b></h3>
+                <form onsubmit="gettext()" method="POST" enctype="multipart/form-data">
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <small id="emailHelp" class="form-text text-muted">Enter room number below and get your text/link</small>
+                      <label for="exampleInputPassword1">Number used during upload</label>
+                      <input type="number" min="1" class="form-control" name="number-down" placeholder="1-9999" required id="txt-retrieve" >
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-outline-primary" name="btn" role="button" data-toggle="modal" data-target="#TEXT" type="button" onclick="gettext()">Get text</button>
+                  </div>
+                  </form>   
+              </div>
+        </section>
+        <hr>
+      
+      
+    <section id="services" class="section-bg">
+    </section>
+	
     <section id="why-us" class="wow fadeIn">
       <div class="container">
         <header class="section-header">
@@ -433,7 +501,7 @@ if ($err) {
 
           <div class="col-lg-4 col-md-6 footer-info">
             <h3>tempCloud</h3>
-            <p>Temporary Cloud Stoarage and Service</p>
+            <p>Temporary Cloud Storage and Service</p>
           </div>
 
           <div class="col-lg-4 col-md-6 footer-links">
@@ -510,6 +578,27 @@ if ($err) {
       </div>
     </div>
 
+  
+  
+  	<div class="modal fade" id="TEXT" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Here's your text</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            <textarea name="text" class="form-control" id="mycontent"></textarea>
+          </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-outline-primary" name="btn" data-dismiss="modal" onclick="copytoCB()">Copy to clipboard</button>
+          </div>
+          </div>
+        </div>
+      </div>
 
 
 
@@ -527,6 +616,7 @@ if ($err) {
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <script src="script.js"></script>
   <script src="assets/vendor/jquery/jquery.min.js"></script>
