@@ -4,9 +4,9 @@ ini_set('display_errors', 1);
 error_reporting(-1);
 
 $host = '127.0.0.1';
-$dbuser = 'nithin'; 
-$dbpass = '88888888';
-$dbname = 'tempCloud';
+$dbuser = 'private'; 
+$dbpass = 'private';
+$dbname = 'private';
 $siteurl = 'https://tempcloud.ml'; 
 $conn = new mysqli($host, $dbuser, $dbpass, $dbname);
 if (!$conn) {
