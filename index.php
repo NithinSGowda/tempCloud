@@ -1,7 +1,4 @@
 <?php
-
-
-
 function shapeSpace_disk_usage() {
 	$disktotal = disk_total_space ('/');
 	$diskfree  = disk_free_space  ('/');
@@ -12,6 +9,7 @@ function shapeSpace_server_uptime() {
 	$uptime = floor(preg_replace ('/\.[0-9]+/', '', file_get_contents('/proc/uptime')) / 3600);
 	return $uptime;
 }
+
 $loadtime = sys_getloadavg();
 ini_set('upload_max_filesize', '200M');
 ini_set('post_max_size', '200M');
@@ -32,47 +30,10 @@ $return = 'http://tempcloud.ml?link=';
         }
         $extend=end((explode(".", $f_name)));
      $fupload=move_uploaded_file($t_name,$upload.'/'.$room.'/'.$name.'.'.$extend);
-   	 //encryptFile($upload.'/'.$room.'/'.$name.'.'.$extend, $room, $upload.'/'.$room.'/'.$name.'.'.$extend);
      if($fupload){
-        //$link = 'http://tempcloud.ml/uploads/'.$room.'/'.$name.'.'.$extend;
-        //header('Location:'.$url.$link);
-        echo '<script>alert("File uploaded")</script>';
+        echo '<script>alert("File uploaded successfully")</script>';
      }
    }
-
-
-	$curl = curl_init();
-
-curl_setopt_array($curl, array(
-	CURLOPT_URL => "https://covid-193.p.rapidapi.com/statistics?country=India",
-	CURLOPT_RETURNTRANSFER => true,
-	CURLOPT_FOLLOWLOCATION => true,
-	CURLOPT_ENCODING => "",
-	CURLOPT_MAXREDIRS => 10,
-	CURLOPT_TIMEOUT => 30,
-	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-	CURLOPT_CUSTOMREQUEST => "GET",
-	CURLOPT_HTTPHEADER => array(
-		"x-rapidapi-host: covid-193.p.rapidapi.com",
-		"x-rapidapi-key: 3230f449d2msh85d69f60dd39ee8p101b93jsn1b8b3dcb6164"
-	),
-));
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-
-curl_close($curl);
-
-if ($err) {
-	echo "cURL Error #:" . $err;
-} else {
-	$obj2 = stripslashes(html_entity_decode($response));
-	$obj = json_decode($obj2,true);
-	//$result = printValues($obj);
-	//echo $result["response"];
-	$corona = $obj["response"]["0"]["cases"]["total"];
-	$death = $obj["response"]["0"]["deaths"]["total"];
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -121,6 +82,9 @@ if ($err) {
     });
   	});
 </script>
+<link rel="stylesheet" type="text/css" href="//wpcc.io/lib/1.0.2/cookieconsent.min.css"/>
+<script src="//wpcc.io/lib/1.0.2/cookieconsent.min.js"></script>
+<script>window.addEventListener("load", function(){window.wpcc.init({"border":"thin","corners":"large","colors":{"popup":{"background":"#ffffff","text":"#000000","border":"#5e99c2"},"button":{"background":"#0096ff","text":"#ffffff"}},"position":"bottom-right","transparency":"15","content":{"href":"http://tempcloud.ml/cookie-policy.html","message":"TempCloud uses cookies to ensure you get the best experience on our website.","button":"Got it"}})});</script>
 </head>
 
 <body>
@@ -216,7 +180,7 @@ if ($err) {
               <div class="col-lg-6 content order-lg-1 order-2" id="upload">
                 <h3><b>Upload</b></h3>
 
-                <form action="index.php" method="POST" enctype="multipart/form-data">
+                <form action="" method="POST" enctype="multipart/form-data">
                   <div class="modal-body">
                   
                       <div class="custom-file">
@@ -632,6 +596,7 @@ if ($err) {
   <script src="assets/vendor/venobox/venobox.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+     
 
 </body>
 
