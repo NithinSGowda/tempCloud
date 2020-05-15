@@ -2,6 +2,7 @@ Temporary cloud storage for handy file sharing
 
 
 Inorder to host it on your server, follow the below steps
+
 i) Upload the files in this repository to your document root. (/var/www/html in case of linux)
 
 ii) Make sure that the permissions of all files are 755.
