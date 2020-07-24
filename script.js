@@ -38,33 +38,35 @@ function loader(){
 	console.log("Done");
 }
 
-// function getlink(){
-//   if(document.getElementById("fileNumber").value=="" || document.getElementById("fileName").value==""){
-//     document.getElementById("mylink").innerHTML="Please enter FILENAME and NUMBER properly";
-//   }
-//   else{
-//     document.getElementById("mylink").innerHTML= "https://tempcloud.ml/uploads/" + document.getElementById("fileNumber").value + "/" + document.getElementById("fileName").value
-//   }
-// }
 function getlink(){
+if(getCookie("userID")==""){
+    	userid = 3;
+    }
+  	else{
+    	userid = getCookie("userID");
+    }
   if(document.getElementById("fileNumber").value=="" || document.getElementById("fileName").value==""){
     document.getElementById("mylink").innerHTML="Please enter FILENAME and NUMBER properly";
   }
   else{
-	// var request;
-	// if(window.XMLHttpRequest)
-	// request = new XMLHttpRequest();
-	// //request = new ActiveXObject("Microsoft.XMLHTTP");
-	// 	request.open('GET', "https://tempcloud.ml/uploads/" + document.getElementById("fileNumber").value + "/" + document.getElementById("fileName").value , false);
-	// 	request.send();
-	// 	if (request.status === 404) {
-	// document.getElementById("mylink").innerHTML="File doesn't exist. \n Please enter FILENAME and NUMBER properly";
-	// 	}
-	// else{
+    document.getElementById("mylink").innerHTML= "Loading..";
+	var data = new FormData();
+    var form = document.querySelector("form");
+    data.append("textarea", "https://tempcloud.ml/uploads/" + document.getElementById("fileNumber").value + "/" + document.getElementById("fileName").value);
+    data.append("submit", "true");
+    data.append("user", userid);
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.addEventListener("readystatechange", function () {
+    if (this.readyState === 4) {
+        myObj = JSON.parse(this.responseText);
+        document.getElementById("mylink").innerHTML = myObj.url;
+    }
+    });
+    xhr.open("POST", "https://tempcloud.ml/shorturl.php");
+    xhr.setRequestHeader("cache-control", "no-cache");
+    xhr.send(data);
 	// document.getElementById("mylink").innerHTML= "https://tempcloud.ml/uploads/" + document.getElementById("fileNumber").value + "/" + document.getElementById("fileName").value
-	// }
-	// }
-	document.getElementById("mylink").innerHTML= "https://tempcloud.ml/uploads/" + document.getElementById("fileNumber").value + "/" + document.getElementById("fileName").value
 }
 }
 function getCookie(cname) {
@@ -86,7 +88,10 @@ function getCookie(cname) {
 function onSignIn(googleUser) {
   	var profile = googleUser.getBasicProfile();
 	if(getCookie("userID")==""){
-    	document.cookie = "userID=" + profile.getId();
+    	var d = new Date();
+  		d.setTime(d.getTime() + (600*24*60*60*1000));
+  		var expires = "expires="+ d.toUTCString();
+    	document.cookie = "userID=" + profile.getId() + ";" + expires+ ";";
   		var id_token = googleUser.getAuthResponse().id_token;
   		window.location.replace("https://tempcloud.ml/login.php?id="+profile.getId()+"&name="+profile.getName()+"&email="+profile.getEmail());
     }
@@ -96,8 +101,7 @@ function onSignIn(googleUser) {
   		window.location.replace("https://tempcloud.ml/login.php?id="+profile.getId()+"&name="+profile.getName()+"&email="+profile.getEmail());
     }
     	else{
-    	console.log("Cookies found");
-    	console.log(x);
+    	console.log("User logged in");
     }
     }
 	

@@ -15,8 +15,6 @@ ini_set('upload_max_filesize', '200M');
 ini_set('post_max_size', '200M');
 ini_set('max_input_time', 300);
 ini_set('max_execution_time', 300);
-$url = 'http://nith.ml/api.php?input=';
-$return = 'http://tempcloud.ml?link=';
 
    if(isset($_POST['btn'])){
      $f_name=$_FILES['file']['name'];
@@ -162,7 +160,7 @@ $return = 'http://tempcloud.ml?link=';
             <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
               <div class="icon"><i class="fa fa-exclamation-circle"></i></div>
               <h4 class="title">Note</h4>
-              <p class="description">This is a temporary cloud service, your files will be deleted if not downloaded for last <b>48hrs</b></p>
+              <p class="description">This is a temporary cloud service, your files will be deleted if not downloaded for last <b>7 days</b></p>
             </div>
 
           </div>
@@ -190,20 +188,15 @@ $return = 'http://tempcloud.ml?link=';
                           <div class="form-group">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your files with anyone else.</small>
                             <label for="exampleInputEmail1">File name</label>
-                            <input type="text" class="form-control file-input-name" name="name" placeholder="Name of your file" required>
+                            <input type="text" class="form-control file-input-name" name="name" placeholder="A new name to your file" required>
+                            <small id="emailHelp" class="form-text text-muted">Remember to enter the just the filename <b>without</b> file extension [,pdf , .png , etc..]</small>
                           </div>
                           <div class="form-group">
                             <label for="exampleInputPassword1">Number</label>
                             <input type="number" min="1" class="form-control uroomNumber" name="room"  placeholder="1-9999" required>
                           	<small id="roomHelp" class="form-text text-muted">*Automatically updates room number if signed-in</small>
                           </div>
-                  <div class="spinner">
-                <div class="rect1"></div>
-                <div class="rect2"></div>
-                <div class="rect3"></div>
-                <div class="rect4"></div>
-                <div class="rect5"></div>
-            </div>
+                  <div class="lds-roller spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
                   </div>
                   <div class="modal-footer">
                     <button type="submit" class="btn btn-primary" name="btn" onclick="loader()">Upload</button>
@@ -219,9 +212,10 @@ $return = 'http://tempcloud.ml?link=';
                 <form action="download.php" method="POST" enctype="multipart/form-data">
                   <div class="modal-body">
                     <div class="form-group">
-                      <small id="emailHelp" class="form-text text-muted">Enter the file name with extension type [.png, .pdf etc]</small>
                       <label for="exampleInputEmail1">File name</label>
                       <input type="text" class="form-control file-input-name" name="name" placeholder="Name of your file" required id="fileName">
+                      <small id="emailHelp" class="form-text text-muted">Remember to enter the filename <b>with</b> file extension [,pdf , .png , etc..]</small>
+              
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Number</label>
@@ -424,14 +418,14 @@ $return = 'http://tempcloud.ml?link=';
             </div>
 
             <div class="form">
-              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <form action="mail.php" method="post" role="form" class="php-email-form">
                 <div class="form-row">
                   <div class="form-group col-lg-6">
                     <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                     <div class="validate"></div>
                   </div>
                   <div class="form-group col-lg-6">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                    <input type="email" class="form-control" name="from" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
                     <div class="validate"></div>
                   </div>
                 </div>
@@ -440,7 +434,7 @@ $return = 'http://tempcloud.ml?link=';
                   <div class="validate"></div>
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                  <textarea class="form-control" name="body" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
                   <div class="validate"></div>
                 </div>
                 <div class="mb-3">
