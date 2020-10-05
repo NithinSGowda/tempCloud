@@ -90,10 +90,10 @@ ini_set('max_execution_time', 300);
     <div class="container">
 
       <div class="logo float-left">
-        <h1 class="text-light"><a href="https://tempcloud.ml"><span>tempCloud</span></a></h1>
+        <h1 class="text-light wow fadeInRight"><a href="https://tempcloud.ml"><span>tempCloud</span></a></h1>
       </div>
 
-      <nav class="main-nav float-right d-none d-lg-block">
+      <nav class="main-nav float-right d-none d-lg-block wow fadeInLeft">
         <ul>
           <li class="active"><a href="#intro">Home</a></li>
           <li><a href="#about">How it works</a></li>
